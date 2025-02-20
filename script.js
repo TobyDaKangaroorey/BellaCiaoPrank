@@ -8,7 +8,7 @@ const messages = [
     "ERROR: Student grade modification detected!",
     "LOCKING ACCOUNT...",
     "DISABLING INTERNET, ALL WIFI DRIVERS BECOMMING OUTDATED,...",
-    "Just kidding... but did I do bad on the math test? 😬"
+    "STEALING THE MOON? 😬"
 ];
 
 let output = document.getElementById("output");

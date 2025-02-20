@@ -3,131 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fun Grades Page</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f5f5f5;
-        }
-
-        /* Progress Bar */
-        .progress-container {
-            width: 50%;
-            background: #ddd;
-            border-radius: 10px;
-            margin: 20px auto;
-            padding: 5px;
-        }
-
-        .progress-bar {
-            width: 0%;
-            height: 30px;
-            background: linear-gradient(to right, #ff9800, #ff5722);
-            border-radius: 10px;
-            transition: width 0.5s;
-        }
-
-        /* Popups */
-        .popup {
-            position: absolute;
-            background: white;
-            border: 2px solid #000;
-            padding: 10px;
-            font-size: 18px;
-            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
-            border-radius: 10px;
-            animation: fadeInOut 3s infinite;
-        }
-
-        @keyframes fadeInOut {
-            0% { opacity: 0; }
-            50% { opacity: 1; }
-            100% { opacity: 0; }
-        }
-
-        /* Button */
-        button {
-            padding: 10px 20px;
-            font-size: 18px;
-            border: none;
-            cursor: pointer;
-            margin-top: 20px;
-            border-radius: 5px;
-        }
-
-        .grade-button {
-            background: #4caf50;
-            color: white;
-        }
-
-    </style>
+    <title>Email Grades</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <h1>Welcome to the Fun Grades Page 🎉</h1>
+    <button onclick="requestFullScreen()">🔲 Fullscreen Mode</button>
 
-    <!-- Progress Bar -->
+    <h1 id="title">🔢 Your Grades Are Loading...</h1>
+
     <div class="progress-container">
         <div class="progress-bar" id="progressBar"></div>
     </div>
 
-    <!-- Button to Show Grades -->
-    <button class="grade-button" onclick="showGrades()">Show Grades</button>
+    <button onclick="startProgress()">📊 Start Loading Grades</button>
+    <button onclick="showGrades()">📜 Show Grades</button>
 
-    <div id="grades" style="display:none; font-size: 22px; margin-top: 20px;">
-        📚 Your Grades: <strong>A+, B, A, C+</strong> 🎉
+    <div id="grades" class="hidden">
+        <h2>📢 Your Grade: <span id="finalGrade">???</span></h2>
     </div>
 
-    <script>
-        // Progress Bar Animation
-        function fillProgressBar() {
-            let progress = 0;
-            let progressBar = document.getElementById("progressBar");
-            let interval = setInterval(() => {
-                progress += 10;
-                progressBar.style.width = progress + "%";
-                if (progress >= 100) clearInterval(interval);
-            }, 500);
-        }
-
-        // Show Grades on Button Click
-        function showGrades() {
-            document.getElementById("grades").style.display = "block";
-        }
-
-        // Random Popups
-        function createRandomPopup() {
-            const messages = [
-                "Do you like pizza? 🍕",
-                "I'm hungry for pasta! 🍝",
-                "Want some cake? 🎂",
-                "Time for a snack! 🍩",
-                "Coffee break? ☕"
-            ];
-
-            let popup = document.createElement("div");
-            popup.className = "popup";
-            popup.innerText = messages[Math.floor(Math.random() * messages.length)];
-
-            // Random Position
-            popup.style.top = Math.random() * 80 + "vh";
-            popup.style.left = Math.random() * 80 + "vw";
-
-            document.body.appendChild(popup);
-
-            // Remove Popup after 3 seconds
-            setTimeout(() => {
-                popup.remove();
-            }, 3000);
-        }
-
-        // Start Everything
-        window.onload = () => {
-            fillProgressBar();
-            setInterval(createRandomPopup, 2000); // Popups every 2 seconds
-        };
-    </script>
+    <script src="script.js"></script>
 
 </body>
 </html>
